@@ -1,0 +1,24 @@
+.wrapper {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loadBtn {
+    border: none;
+    padding: 12px 16px;
+    border-radius: 5px;
+    background-color: transparent;
+    /* border: 1px solid #fff; */
+    color: #fff;
+    width: 200px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.loadBtn:hover {
+    background-color: blue;
+    border: none;
+
+}
