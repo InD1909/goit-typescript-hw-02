@@ -8,19 +8,19 @@ import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import s from "./App.module.css";
+import { Image } from "./App.types";
 
 const API_KEY = "GYd7KEd25K2mefM5GQPU0z00l9SazjjXutll20XOvJ4";
-
 const BASE_URL = "https://api.unsplash.com";
 
-const App = () => {
-  const [query, setQuery] = useState("");
-  const [images, setImages] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [showModal, setShowModal] = useState(false);
-  const [modalImage, setModalImage] = useState(null);
+const App: React.FC = () => {
+  const [query, setQuery] = useState<string>("");
+  const [images, setImages] = useState<Image[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [modalImage, setModalImage] = useState<Image | null>(null);
 
   useEffect(() => {
     if (!query) return;
@@ -46,14 +46,14 @@ const App = () => {
     fetchImages();
   }, [query, page]);
 
-  const handleSearchSubmit = (newQuery) => {
+  const handleSearchSubmit = (newQuery: string) => {
     if (newQuery === query) return;
     setQuery(newQuery);
     setImages([]);
     setPage(1);
   };
 
-  const openModal = (image) => {
+  const openModal = (image: Image) => {
     setModalImage(image);
     setShowModal(true);
   };

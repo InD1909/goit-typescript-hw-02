@@ -1,14 +1,16 @@
 import { useState } from "react";
 import s from "./SearchBar.module.css";
 import toast from "react-hot-toast";
+import { SearchBarProps } from "./SearchBar.types";
 
-export const SearchBar = ({ onSubmit }) => {
-  const [query, setQuery] = useState("");
-  const handleInputChange = (evt) => {
+export const SearchBar: React.FC<SearchBarProps> = ({ onSubmit }) => {
+  const [query, setQuery] = useState<string>("");
+
+  const handleInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(evt.target.value);
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault();
     if (query.trim() === "") {
       toast.error("Please enter a search query");
@@ -17,9 +19,11 @@ export const SearchBar = ({ onSubmit }) => {
     onSubmit(query);
     setQuery("");
   };
+
   return (
     <div>
       <form onSubmit={handleSubmit} className={s.wrapper}>
+        {" "}
         <input
           placeholder="Search images..."
           type="text"
@@ -34,3 +38,4 @@ export const SearchBar = ({ onSubmit }) => {
     </div>
   );
 };
+export default SearchBar;
