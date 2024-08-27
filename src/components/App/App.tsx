@@ -8,7 +8,7 @@ import LoadMoreBtn from "../LoadMoreBtn/LoadMoreBtn";
 import axios from "axios";
 import Loader from "../Loader/Loader";
 import s from "./App.module.css";
-import { Image } from "./App.types";
+import { AppAPI, Image } from "./App.types";
 
 const API_KEY = "GYd7KEd25K2mefM5GQPU0z00l9SazjjXutll20XOvJ4";
 const BASE_URL = "https://api.unsplash.com";
@@ -28,7 +28,7 @@ const App: React.FC = () => {
       setLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`${BASE_URL}/search/photos`, {
+        const response = await axios.get<AppAPI>(`${BASE_URL}/search/photos`, {
           params: {
             query,
             page,

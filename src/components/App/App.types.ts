@@ -18,4 +18,10 @@ export interface AppState {
   modalImage: Image | null;
 }
 
+export interface AppAPI {
+  total: number;
+  total_pages: number;
+  results: Image[];
+}
+
 export interface AppProps {}
